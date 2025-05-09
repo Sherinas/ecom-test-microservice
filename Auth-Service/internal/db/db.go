@@ -1,0 +1,26 @@
+package db
+
+import (
+	"fmt"
+
+	"github.com/Sherinas/ecommerce-microservices/Auth-Service/config"
+	"github.com/Sherinas/ecommerce-microservices/Auth-Service/internal/models"
+	"gorm.io/driver/postgres"
+	"gorm.io/gorm"
+)
+
+func NewDB(cfg *config.Config) (*gorm.DB, error) {
+	dsn := fmt.Sprintf("host=%s user=%s password=%s port=%s dbname=auth_db sslmode=disable",
+		cfg.PostgresHost, cfg.PostgresUser, cfg.PostgresPassword, cfg.PostgresPort)
+	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
+	if err != nil {
+		return nil, fmt.Errorf("failed to connect to database: %w", err)
+	}
+
+	// Auto-migrate the User model
+	if err := db.AutoMigrate(&models.User{}); err != nil {
+		return nil, fmt.Errorf("failed to migrate database: %w", err)
+	}
+
+	return db, nil
+}

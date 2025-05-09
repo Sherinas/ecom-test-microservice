@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package user;
+option go_package = "./pb/user";
+
+service UserService {
+  rpc ListUsers (ListUsersRequest) returns (ListUsersResponse);
+  rpc DeleteUser (DeleteUserRequest) returns (DeleteUserResponse);
+  rpc BlockUser (BlockUserRequest) returns (BlockUserResponse);
+}
+
+message ListUsersRequest {}
+
+message ListUsersResponse {
+  repeated User users = 1;
+}
+
+message User {
+  int64 id = 1;
+  string email = 2;
+  bool is_blocked = 3;
+}
+
+message DeleteUserRequest {
+  int64 id = 1;
+}
+
+message DeleteUserResponse {
+  bool success = 1;
+}
+
+message BlockUserRequest {
+  int64 id = 1;
+}
+
+message BlockUserResponse {
+  bool success = 1;
+}

@@ -1,0 +1,96 @@
+syntax = "proto3";
+
+package admin;
+option go_package = "github.com/Sherinas/ecommerce-microservices/Admin-Service/pb/admin";
+
+service AdminService {
+  rpc AddProduct (AdminAddProductRequest) returns (AdminAddProductResponse);
+  rpc UpdateProduct (AdminUpdateProductRequest) returns (AdminUpdateProductResponse);
+  rpc DeleteProduct (AdminDeleteProductRequest) returns (AdminDeleteProductResponse);
+  rpc ListAllProducts (AdminListAllProductsRequest) returns (AdminListAllProductsResponse);
+  rpc GetProductById (AdminGetProductByIdRequest) returns (AdminGetProductByIdResponse);
+  rpc ListUsers (AdminListUsersRequest) returns (AdminListUsersResponse);
+  rpc DeleteUser (AdminDeleteUserRequest) returns (AdminDeleteUserResponse);
+  rpc BlockUser (AdminBlockUserRequest) returns (AdminBlockUserResponse);
+}
+
+message AdminAddProductRequest {
+  string name = 1;
+  float price = 2;
+  int32 quantity = 3;
+}
+
+message AdminAddProductResponse {
+  int64 id = 1;
+}
+
+message AdminUpdateProductRequest {
+  int64 id = 1;
+  string name = 2;
+  float price = 3;
+  int32 quantity = 4;
+}
+
+message AdminUpdateProductResponse {
+  bool success = 1;
+}
+
+message AdminDeleteProductRequest {
+  int64 id = 1;
+}
+
+message AdminDeleteProductResponse {
+  bool success = 1;
+}
+
+message AdminListAllProductsRequest {}
+
+message AdminListAllProductsResponse {
+  repeated AdminProduct products = 1;
+}
+
+message AdminProduct {
+  int64 id = 1;
+  string name = 2;
+  float price = 3;
+  int32 quantity = 4;
+}
+
+message AdminGetProductByIdRequest {
+  int64 id = 1;
+}
+
+message AdminGetProductByIdResponse {
+  int64 id = 1;
+  string name = 2;
+  float price = 3;
+  int32 quantity = 4;
+}
+
+message AdminListUsersRequest {}
+
+message AdminListUsersResponse {
+  repeated AdminUser users = 1;
+}
+
+message AdminUser {
+  int64 id = 1;
+  string email = 2;
+  bool is_blocked = 3;
+}
+
+message AdminDeleteUserRequest {
+  int64 id = 1;
+}
+
+message AdminDeleteUserResponse {
+  bool success = 1;
+}
+
+message AdminBlockUserRequest {
+  int64 id = 1;
+}
+
+message AdminBlockUserResponse {
+  bool success = 1;
+}
