@@ -5,9 +5,8 @@ import (
 
 	"github.com/Sherinas/ecommerce-microservices/adminservice/internal/client"
 	"github.com/Sherinas/ecommerce-microservices/adminservice/pb/admin"
-	product "github.com/Sherinas/ecommerce-microservices/adminservice/pb/product"
-	user "github.com/Sherinas/ecommerce-microservices/adminservice/pb/user"
-
+	"github.com/Sherinas/ecommerce-microservices/adminservice/pb/auth"
+	"github.com/Sherinas/ecommerce-microservices/adminservice/pb/product"
 	"github.com/rs/zerolog"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -135,11 +134,12 @@ func (s *AdminServer) ListUsers(ctx context.Context, req *admin.ListUsersRequest
 
 	s.logger.Info().Msg("Processing ListUsers request")
 
-	resp, err := s.clients.UserClient.ListUsers(ctx, &user.ListUsersRequest{})
+	resp, err := s.clients.AuthClient.ListUsers(ctx, &auth.ListUsersRequest{})
 	if err != nil {
 		s.logger.Error().Err(err).Msg("Failed to list users")
 		return nil, status.Error(codes.Internal, "failed to list users")
 	}
+	s.logger.Info().Msg("Processing ListUsers ===request")
 
 	users := make([]*admin.User, len(resp.Users))
 	for i, u := range resp.Users {
@@ -160,7 +160,7 @@ func (s *AdminServer) DeleteUser(ctx context.Context, req *admin.DeleteUserReque
 
 	s.logger.Info().Int64("id", req.Id).Msg("Processing DeleteUser request")
 
-	_, err := s.clients.UserClient.DeleteUser(ctx, &user.DeleteUserRequest{Id: req.Id})
+	_, err := s.clients.AuthClient.DeleteUser(ctx, &auth.DeleteUserRequest{Id: req.Id})
 	if err != nil {
 		s.logger.Error().Err(err).Int64("id", req.Id).Msg("Failed to delete user")
 		return nil, status.Error(codes.Internal, "failed to delete user")
@@ -176,7 +176,7 @@ func (s *AdminServer) BlockUser(ctx context.Context, req *admin.BlockUserRequest
 
 	s.logger.Info().Int64("id", req.Id).Msg("Processing BlockUser request")
 
-	_, err := s.clients.UserClient.BlockUser(ctx, &user.BlockUserRequest{Id: req.Id})
+	_, err := s.clients.AuthClient.BlockUser(ctx, &auth.BlockUserRequest{Id: req.Id})
 	if err != nil {
 		s.logger.Error().Err(err).Int64("id", req.Id).Msg("Failed to block user")
 		return nil, status.Error(codes.Internal, "failed to block user")

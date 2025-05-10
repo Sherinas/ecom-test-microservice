@@ -13,10 +13,11 @@ type Config struct {
 	PostgresHost     string
 	PostgresPort     string
 	ProductPort      string
+	PostgresDBName   string
 }
 
 func LoadConfig() *Config {
-	if err := godotenv.Load(); err != nil {
+	if err := godotenv.Load("../.env"); err != nil {
 		log.Warn().Err(err).Msg("Error loading .env file")
 	}
 
@@ -26,5 +27,6 @@ func LoadConfig() *Config {
 		PostgresHost:     os.Getenv("POSTGRES_HOST"),
 		PostgresPort:     os.Getenv("POSTGRES_PORT"),
 		ProductPort:      os.Getenv("PRODUCT_PORT"),
+		PostgresDBName:   os.Getenv("POSTGRESDB_NAME"),
 	}
 }

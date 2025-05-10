@@ -1,29 +1,32 @@
 package main
 
 import (
-	"github.com/Sherinas/ecommerce-microservices/APIGateway/internal/config"
-	"github.com/Sherinas/ecommerce-microservices/APIGateway/internal/gateway"
-	"github.com/Sherinas/ecommerce-microservices/APIGateway/internal/logger"
+	"github.com/Sherinas/ecommerce-microservices/APIGateway/client"
+	"github.com/Sherinas/ecommerce-microservices/APIGateway/config"
+	"github.com/Sherinas/ecommerce-microservices/APIGateway/internal/handler"
+	"github.com/Sherinas/ecommerce-microservices/APIGateway/internal/middleware"
+	"github.com/Sherinas/ecommerce-microservices/APIGateway/internal/util"
+	"github.com/Sherinas/ecommerce-microservices/APIGateway/logger"
+
 	"github.com/gin-gonic/gin"
-	"github.com/rs/zerolog"
 )
 
 func main() {
 	cfg := config.LoadConfig()
 	log := logger.NewLogger()
 
-	clients, err := gateway.NewClients(cfg.AuthServiceAddr, cfg.AdminServiceAddr, cfg.ProductServiceAddr, log)
+	clients, err := client.NewClients(cfg.AuthServiceAddr, cfg.AdminServiceAddr, cfg.ProductServiceAddr, log)
 	if err != nil {
 		log.Fatal().Err(err).Msg("Failed to initialize gRPC clients")
 	}
 
-	validator := gateway.NewAuthValidator(log, cfg.JWTSecret)
-	handler := gateway.NewGatewayHandler(clients, log, validator, cfg.AdminSecret)
+	validator := util.NewAuthValidator(log, cfg.JWTSecret)
+	handler := handler.NewGatewayHandler(clients, log, validator, cfg.AdminSecret)
 
 	r := gin.New()
 	r.Use(gin.Recovery())
-	r.Use(gateway.LoggingMiddleware(log))
-	r.Use(gateway.ErrorHandlingMiddleware())
+	r.Use(middleware.LoggingMiddleware(log))
+	r.Use(middleware.ErrorHandlingMiddleware())
 
 	handler.RegisterRoutes(r)
 

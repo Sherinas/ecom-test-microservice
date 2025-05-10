@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package auth;
-option go_package = "github.com/Sherinas/ecommerce-microservices/Auth-Service/pb/auth";
+option go_package = "/pb/auth/";
 
 service AuthService {
   rpc SignUp (SignUpRequest) returns (SignUpResponse);

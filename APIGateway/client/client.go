@@ -1,9 +1,9 @@
-package gateway
+package client
 
 import (
-	"github.com/Sherinas/ecommerce-microservices/APIGateway/internal/pb/admin"
-	"github.com/Sherinas/ecommerce-microservices/APIGateway/internal/pb/auth"
-	"github.com/Sherinas/ecommerce-microservices/APIGateway/internal/pb/product"
+	"github.com/Sherinas/ecommerce-microservices/APIGateway/pb/admin"
+	"github.com/Sherinas/ecommerce-microservices/APIGateway/pb/auth"
+	"github.com/Sherinas/ecommerce-microservices/APIGateway/pb/product"
 	"github.com/rs/zerolog"
 	"google.golang.org/grpc"
 )

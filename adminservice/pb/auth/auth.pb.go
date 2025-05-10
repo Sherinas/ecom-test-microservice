@@ -2,9 +2,9 @@
 // versions:
 // 	protoc-gen-go v1.36.6
 // 	protoc        v5.29.1
-// source: pb/proto/user.proto
+// source: pb/proto/auth.proto
 
-package user
+package auth
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -29,7 +29,7 @@ type ListUsersRequest struct {
 
 func (x *ListUsersRequest) Reset() {
 	*x = ListUsersRequest{}
-	mi := &file_pb_proto_user_proto_msgTypes[0]
+	mi := &file_pb_proto_auth_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -41,7 +41,7 @@ func (x *ListUsersRequest) String() string {
 func (*ListUsersRequest) ProtoMessage() {}
 
 func (x *ListUsersRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_pb_proto_user_proto_msgTypes[0]
+	mi := &file_pb_proto_auth_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -54,7 +54,7 @@ func (x *ListUsersRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListUsersRequest.ProtoReflect.Descriptor instead.
 func (*ListUsersRequest) Descriptor() ([]byte, []int) {
-	return file_pb_proto_user_proto_rawDescGZIP(), []int{0}
+	return file_pb_proto_auth_proto_rawDescGZIP(), []int{0}
 }
 
 type ListUsersResponse struct {
@@ -66,7 +66,7 @@ type ListUsersResponse struct {
 
 func (x *ListUsersResponse) Reset() {
 	*x = ListUsersResponse{}
-	mi := &file_pb_proto_user_proto_msgTypes[1]
+	mi := &file_pb_proto_auth_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -78,7 +78,7 @@ func (x *ListUsersResponse) String() string {
 func (*ListUsersResponse) ProtoMessage() {}
 
 func (x *ListUsersResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_pb_proto_user_proto_msgTypes[1]
+	mi := &file_pb_proto_auth_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -91,7 +91,7 @@ func (x *ListUsersResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListUsersResponse.ProtoReflect.Descriptor instead.
 func (*ListUsersResponse) Descriptor() ([]byte, []int) {
-	return file_pb_proto_user_proto_rawDescGZIP(), []int{1}
+	return file_pb_proto_auth_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *ListUsersResponse) GetUsers() []*User {
@@ -112,7 +112,7 @@ type User struct {
 
 func (x *User) Reset() {
 	*x = User{}
-	mi := &file_pb_proto_user_proto_msgTypes[2]
+	mi := &file_pb_proto_auth_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -124,7 +124,7 @@ func (x *User) String() string {
 func (*User) ProtoMessage() {}
 
 func (x *User) ProtoReflect() protoreflect.Message {
-	mi := &file_pb_proto_user_proto_msgTypes[2]
+	mi := &file_pb_proto_auth_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -137,7 +137,7 @@ func (x *User) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use User.ProtoReflect.Descriptor instead.
 func (*User) Descriptor() ([]byte, []int) {
-	return file_pb_proto_user_proto_rawDescGZIP(), []int{2}
+	return file_pb_proto_auth_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *User) GetId() int64 {
@@ -170,7 +170,7 @@ type DeleteUserRequest struct {
 
 func (x *DeleteUserRequest) Reset() {
 	*x = DeleteUserRequest{}
-	mi := &file_pb_proto_user_proto_msgTypes[3]
+	mi := &file_pb_proto_auth_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -182,7 +182,7 @@ func (x *DeleteUserRequest) String() string {
 func (*DeleteUserRequest) ProtoMessage() {}
 
 func (x *DeleteUserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_pb_proto_user_proto_msgTypes[3]
+	mi := &file_pb_proto_auth_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -195,7 +195,7 @@ func (x *DeleteUserRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteUserRequest.ProtoReflect.Descriptor instead.
 func (*DeleteUserRequest) Descriptor() ([]byte, []int) {
-	return file_pb_proto_user_proto_rawDescGZIP(), []int{3}
+	return file_pb_proto_auth_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *DeleteUserRequest) GetId() int64 {
@@ -214,7 +214,7 @@ type DeleteUserResponse struct {
 
 func (x *DeleteUserResponse) Reset() {
 	*x = DeleteUserResponse{}
-	mi := &file_pb_proto_user_proto_msgTypes[4]
+	mi := &file_pb_proto_auth_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -226,7 +226,7 @@ func (x *DeleteUserResponse) String() string {
 func (*DeleteUserResponse) ProtoMessage() {}
 
 func (x *DeleteUserResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_pb_proto_user_proto_msgTypes[4]
+	mi := &file_pb_proto_auth_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -239,7 +239,7 @@ func (x *DeleteUserResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteUserResponse.ProtoReflect.Descriptor instead.
 func (*DeleteUserResponse) Descriptor() ([]byte, []int) {
-	return file_pb_proto_user_proto_rawDescGZIP(), []int{4}
+	return file_pb_proto_auth_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *DeleteUserResponse) GetSuccess() bool {
@@ -258,7 +258,7 @@ type BlockUserRequest struct {
 
 func (x *BlockUserRequest) Reset() {
 	*x = BlockUserRequest{}
-	mi := &file_pb_proto_user_proto_msgTypes[5]
+	mi := &file_pb_proto_auth_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -270,7 +270,7 @@ func (x *BlockUserRequest) String() string {
 func (*BlockUserRequest) ProtoMessage() {}
 
 func (x *BlockUserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_pb_proto_user_proto_msgTypes[5]
+	mi := &file_pb_proto_auth_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -283,7 +283,7 @@ func (x *BlockUserRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BlockUserRequest.ProtoReflect.Descriptor instead.
 func (*BlockUserRequest) Descriptor() ([]byte, []int) {
-	return file_pb_proto_user_proto_rawDescGZIP(), []int{5}
+	return file_pb_proto_auth_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *BlockUserRequest) GetId() int64 {
@@ -302,7 +302,7 @@ type BlockUserResponse struct {
 
 func (x *BlockUserResponse) Reset() {
 	*x = BlockUserResponse{}
-	mi := &file_pb_proto_user_proto_msgTypes[6]
+	mi := &file_pb_proto_auth_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -314,7 +314,7 @@ func (x *BlockUserResponse) String() string {
 func (*BlockUserResponse) ProtoMessage() {}
 
 func (x *BlockUserResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_pb_proto_user_proto_msgTypes[6]
+	mi := &file_pb_proto_auth_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -327,7 +327,7 @@ func (x *BlockUserResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BlockUserResponse.ProtoReflect.Descriptor instead.
 func (*BlockUserResponse) Descriptor() ([]byte, []int) {
-	return file_pb_proto_user_proto_rawDescGZIP(), []int{6}
+	return file_pb_proto_auth_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *BlockUserResponse) GetSuccess() bool {
@@ -337,15 +337,15 @@ func (x *BlockUserResponse) GetSuccess() bool {
 	return false
 }
 
-var File_pb_proto_user_proto protoreflect.FileDescriptor
+var File_pb_proto_auth_proto protoreflect.FileDescriptor
 
-const file_pb_proto_user_proto_rawDesc = "" +
+const file_pb_proto_auth_proto_rawDesc = "" +
 	"\n" +
-	"\x13pb/proto/user.proto\x12\x04user\"\x12\n" +
+	"\x13pb/proto/auth.proto\x12\x04auth\"\x12\n" +
 	"\x10ListUsersRequest\"5\n" +
 	"\x11ListUsersResponse\x12 \n" +
 	"\x05users\x18\x01 \x03(\v2\n" +
-	".user.UserR\x05users\"K\n" +
+	".auth.UserR\x05users\"K\n" +
 	"\x04User\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x14\n" +
 	"\x05email\x18\x02 \x01(\tR\x05email\x12\x1d\n" +
@@ -359,42 +359,42 @@ const file_pb_proto_user_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\"-\n" +
 	"\x11BlockUserResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess2\xca\x01\n" +
-	"\vUserService\x12<\n" +
-	"\tListUsers\x12\x16.user.ListUsersRequest\x1a\x17.user.ListUsersResponse\x12?\n" +
+	"\vAuthService\x12<\n" +
+	"\tListUsers\x12\x16.auth.ListUsersRequest\x1a\x17.auth.ListUsersResponse\x12?\n" +
 	"\n" +
-	"DeleteUser\x12\x17.user.DeleteUserRequest\x1a\x18.user.DeleteUserResponse\x12<\n" +
-	"\tBlockUser\x12\x16.user.BlockUserRequest\x1a\x17.user.BlockUserResponseB\vZ\t./pb/userb\x06proto3"
+	"DeleteUser\x12\x17.auth.DeleteUserRequest\x1a\x18.auth.DeleteUserResponse\x12<\n" +
+	"\tBlockUser\x12\x16.auth.BlockUserRequest\x1a\x17.auth.BlockUserResponseB\vZ\t./pb/authb\x06proto3"
 
 var (
-	file_pb_proto_user_proto_rawDescOnce sync.Once
-	file_pb_proto_user_proto_rawDescData []byte
+	file_pb_proto_auth_proto_rawDescOnce sync.Once
+	file_pb_proto_auth_proto_rawDescData []byte
 )
 
-func file_pb_proto_user_proto_rawDescGZIP() []byte {
-	file_pb_proto_user_proto_rawDescOnce.Do(func() {
-		file_pb_proto_user_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_pb_proto_user_proto_rawDesc), len(file_pb_proto_user_proto_rawDesc)))
+func file_pb_proto_auth_proto_rawDescGZIP() []byte {
+	file_pb_proto_auth_proto_rawDescOnce.Do(func() {
+		file_pb_proto_auth_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_pb_proto_auth_proto_rawDesc), len(file_pb_proto_auth_proto_rawDesc)))
 	})
-	return file_pb_proto_user_proto_rawDescData
+	return file_pb_proto_auth_proto_rawDescData
 }
 
-var file_pb_proto_user_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
-var file_pb_proto_user_proto_goTypes = []any{
-	(*ListUsersRequest)(nil),   // 0: user.ListUsersRequest
-	(*ListUsersResponse)(nil),  // 1: user.ListUsersResponse
-	(*User)(nil),               // 2: user.User
-	(*DeleteUserRequest)(nil),  // 3: user.DeleteUserRequest
-	(*DeleteUserResponse)(nil), // 4: user.DeleteUserResponse
-	(*BlockUserRequest)(nil),   // 5: user.BlockUserRequest
-	(*BlockUserResponse)(nil),  // 6: user.BlockUserResponse
+var file_pb_proto_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_pb_proto_auth_proto_goTypes = []any{
+	(*ListUsersRequest)(nil),   // 0: auth.ListUsersRequest
+	(*ListUsersResponse)(nil),  // 1: auth.ListUsersResponse
+	(*User)(nil),               // 2: auth.User
+	(*DeleteUserRequest)(nil),  // 3: auth.DeleteUserRequest
+	(*DeleteUserResponse)(nil), // 4: auth.DeleteUserResponse
+	(*BlockUserRequest)(nil),   // 5: auth.BlockUserRequest
+	(*BlockUserResponse)(nil),  // 6: auth.BlockUserResponse
 }
-var file_pb_proto_user_proto_depIdxs = []int32{
-	2, // 0: user.ListUsersResponse.users:type_name -> user.User
-	0, // 1: user.UserService.ListUsers:input_type -> user.ListUsersRequest
-	3, // 2: user.UserService.DeleteUser:input_type -> user.DeleteUserRequest
-	5, // 3: user.UserService.BlockUser:input_type -> user.BlockUserRequest
-	1, // 4: user.UserService.ListUsers:output_type -> user.ListUsersResponse
-	4, // 5: user.UserService.DeleteUser:output_type -> user.DeleteUserResponse
-	6, // 6: user.UserService.BlockUser:output_type -> user.BlockUserResponse
+var file_pb_proto_auth_proto_depIdxs = []int32{
+	2, // 0: auth.ListUsersResponse.users:type_name -> auth.User
+	0, // 1: auth.AuthService.ListUsers:input_type -> auth.ListUsersRequest
+	3, // 2: auth.AuthService.DeleteUser:input_type -> auth.DeleteUserRequest
+	5, // 3: auth.AuthService.BlockUser:input_type -> auth.BlockUserRequest
+	1, // 4: auth.AuthService.ListUsers:output_type -> auth.ListUsersResponse
+	4, // 5: auth.AuthService.DeleteUser:output_type -> auth.DeleteUserResponse
+	6, // 6: auth.AuthService.BlockUser:output_type -> auth.BlockUserResponse
 	4, // [4:7] is the sub-list for method output_type
 	1, // [1:4] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name
@@ -402,26 +402,26 @@ var file_pb_proto_user_proto_depIdxs = []int32{
 	0, // [0:1] is the sub-list for field type_name
 }
 
-func init() { file_pb_proto_user_proto_init() }
-func file_pb_proto_user_proto_init() {
-	if File_pb_proto_user_proto != nil {
+func init() { file_pb_proto_auth_proto_init() }
+func file_pb_proto_auth_proto_init() {
+	if File_pb_proto_auth_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_pb_proto_user_proto_rawDesc), len(file_pb_proto_user_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_pb_proto_auth_proto_rawDesc), len(file_pb_proto_auth_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   7,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_pb_proto_user_proto_goTypes,
-		DependencyIndexes: file_pb_proto_user_proto_depIdxs,
-		MessageInfos:      file_pb_proto_user_proto_msgTypes,
+		GoTypes:           file_pb_proto_auth_proto_goTypes,
+		DependencyIndexes: file_pb_proto_auth_proto_depIdxs,
+		MessageInfos:      file_pb_proto_auth_proto_msgTypes,
 	}.Build()
-	File_pb_proto_user_proto = out.File
-	file_pb_proto_user_proto_goTypes = nil
-	file_pb_proto_user_proto_depIdxs = nil
+	File_pb_proto_auth_proto = out.File
+	file_pb_proto_auth_proto_goTypes = nil
+	file_pb_proto_auth_proto_depIdxs = nil
 }

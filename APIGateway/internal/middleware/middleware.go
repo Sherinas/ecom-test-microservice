@@ -1,9 +1,10 @@
-package gateway
+package middleware
 
 import (
 	"net/http"
 	"time"
 
+	"github.com/Sherinas/ecommerce-microservices/APIGateway/internal/util"
 	"github.com/gin-gonic/gin"
 	"github.com/rs/zerolog"
 )
@@ -28,18 +29,18 @@ func LoggingMiddleware(logger *zerolog.Logger) gin.HandlerFunc {
 	}
 }
 
-func JWTAuthMiddleware(validator *AuthValidator) gin.HandlerFunc {
+func JWTAuthMiddleware(validator *util.AuthValidator) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		token := c.GetHeader("Authorization")
 		if token == "" {
-			validator.logger.Error().Msg("No authorization token provided")
+
 			c.JSON(http.StatusUnauthorized, gin.H{"error": "authorization token required"})
 			c.Abort()
 			return
 		}
 
 		if err := validator.ValidateAdminJWT(token); err != nil {
-			validator.logger.Error().Err(err).Msg("JWT validation failed")
+
 			c.JSON(http.StatusUnauthorized, gin.H{"error": "invalid or unauthorized token"})
 			c.Abort()
 			return

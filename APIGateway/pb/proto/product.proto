@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package product;
-option go_package = "github.com/Sherinas/ecommerce-microservices/Product-Service/pb/product";
+option go_package = "./pb/product/";
 
 service ProductService {
   rpc AddProduct (AddProductRequest) returns (AddProductResponse);

@@ -1,9 +1,9 @@
 syntax = "proto3";
 
-package user;
-option go_package = "./pb/user";
+package auth;
+option go_package = "./pb/auth";
 
-service UserService {
+service AuthService {
   rpc ListUsers (ListUsersRequest) returns (ListUsersResponse);
   rpc DeleteUser (DeleteUserRequest) returns (DeleteUserResponse);
   rpc BlockUser (BlockUserRequest) returns (BlockUserResponse);

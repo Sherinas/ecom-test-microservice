@@ -1,12 +1,17 @@
-package gateway
+package handler
 
 import (
 	"net/http"
 	"strconv"
 
-	"github.com/Sherinas/ecommerce-microservices/APIGateway/internal/pb/admin"
-	"github.com/Sherinas/ecommerce-microservices/APIGateway/internal/pb/auth"
-	"github.com/Sherinas/ecommerce-microservices/APIGateway/internal/pb/product"
+	"github.com/Sherinas/ecommerce-microservices/APIGateway/client"
+
+	"github.com/Sherinas/ecommerce-microservices/APIGateway/internal/middleware"
+	"github.com/Sherinas/ecommerce-microservices/APIGateway/internal/util"
+	"github.com/Sherinas/ecommerce-microservices/APIGateway/pb/admin"
+	"github.com/Sherinas/ecommerce-microservices/APIGateway/pb/auth"
+	"github.com/Sherinas/ecommerce-microservices/APIGateway/pb/product"
+
 	"github.com/gin-gonic/gin"
 	"github.com/rs/zerolog"
 	"google.golang.org/grpc/codes"
@@ -14,13 +19,13 @@ import (
 )
 
 type GatewayHandler struct {
-	clients     *Clients
+	clients     *client.Clients
 	logger      *zerolog.Logger
-	validator   *AuthValidator
+	validator   *util.AuthValidator
 	adminSecret string
 }
 
-func NewGatewayHandler(clients *Clients, logger *zerolog.Logger, validator *AuthValidator, adminSecret string) *GatewayHandler {
+func NewGatewayHandler(clients *client.Clients, logger *zerolog.Logger, validator *util.AuthValidator, adminSecret string) *GatewayHandler {
 	return &GatewayHandler{
 		clients:     clients,
 		logger:      logger,
@@ -39,16 +44,16 @@ func (h *GatewayHandler) RegisterRoutes(r *gin.Engine) {
 	}
 
 	// Admin routes (require JWT with role: admin)
-	adminGroup := r.Group("/admin").Use(JWTAuthMiddleware(h.validator))
+	adminGroup := r.Group("/admin").Use(middleware.JWTAuthMiddleware(h.validator))
 	{
 		adminGroup.POST("/products", h.AddProduct)
 		adminGroup.PUT("/products/:id", h.UpdateProduct)
 		adminGroup.DELETE("/products/:id", h.DeleteProduct)
 		adminGroup.GET("/products", h.ListAllProductsAdmin)
 		adminGroup.GET("/products/:id", h.GetProductByIdAdmin)
-		adminGroup.GET("/users", h.ListUsers)
-		adminGroup.DELETE("/users/:id", h.DeleteUser)
-		adminGroup.PATCH("/users/:id/block", h.BlockUser)
+		// adminGroup.GET("/users", h.ListUsers)
+		// adminGroup.DELETE("/users/:id", h.DeleteUser)
+		// adminGroup.PATCH("/users/:id/block", h.BlockUser)
 	}
 
 	// Public routes (Product)
@@ -74,9 +79,10 @@ func (h *GatewayHandler) SignUp(c *gin.Context) {
 	// Restrict admin role creation
 	ctx := c.Request.Context()
 	if req.Role == "admin" {
-		adminSecret := c.GetHeader("x-admin-secret")
+		adminSecret := c.GetHeader("adminx--secret")
 		if adminSecret != h.adminSecret {
 			h.logger.Error().Msg("Invalid admin secret")
+
 			c.JSON(http.StatusForbidden, gin.H{"error": "invalid admin secret"})
 			return
 		}
