@@ -1,7 +1,7 @@
 package repository
 
 import (
-	"github.com/Sherinas/ecommerce-microservices/Product-service/internal/models"
+	"github.com/Sherinas/ecommerce-microservices/product-service/internal/models"
 	"github.com/rs/zerolog"
 	"gorm.io/gorm"
 )

@@ -3,12 +3,12 @@ package main
 import (
 	"net"
 
-	"github.com/Sherinas/ecommerce-microservices/Product-service/config"
-	"github.com/Sherinas/ecommerce-microservices/Product-service/internal/db"
-	"github.com/Sherinas/ecommerce-microservices/Product-service/internal/handler"
-	"github.com/Sherinas/ecommerce-microservices/Product-service/internal/repository"
-	"github.com/Sherinas/ecommerce-microservices/Product-service/logger"
-	"github.com/Sherinas/ecommerce-microservices/Product-service/pb/product"
+	"github.com/Sherinas/ecommerce-microservices/product-service/config"
+	"github.com/Sherinas/ecommerce-microservices/product-service/internal/db"
+	"github.com/Sherinas/ecommerce-microservices/product-service/internal/handler"
+	"github.com/Sherinas/ecommerce-microservices/product-service/internal/repository"
+	"github.com/Sherinas/ecommerce-microservices/product-service/logger"
+	"github.com/Sherinas/ecommerce-microservices/product-service/pb/product"
 	"google.golang.org/grpc"
 )
 

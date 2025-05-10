@@ -3,13 +3,14 @@ package handler
 import (
 	"context"
 
-	jwtauth "github.com/Sherinas/ecommerce-microservices/Auth-Service/internal/jwt"
-	"github.com/Sherinas/ecommerce-microservices/Auth-Service/internal/repository"
-	"github.com/Sherinas/ecommerce-microservices/Auth-Service/internal/utils"
-	"github.com/Sherinas/ecommerce-microservices/Auth-Service/pb/auth"
+	jwtauth "github.com/Sherinas/ecommerce-microservices/auth-service/internal/jwt"
+	"github.com/Sherinas/ecommerce-microservices/auth-service/internal/repository"
+	"github.com/Sherinas/ecommerce-microservices/auth-service/internal/utils"
+	"github.com/Sherinas/ecommerce-microservices/auth-service/pb/auth"
 	"github.com/rs/zerolog"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
+
 	"gorm.io/gorm"
 )
 

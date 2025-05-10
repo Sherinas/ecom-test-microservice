@@ -3,8 +3,8 @@ package handler
 import (
 	"context"
 
-	"github.com/Sherinas/ecommerce-microservices/Product-service/internal/repository"
-	"github.com/Sherinas/ecommerce-microservices/Product-service/pb/product"
+	"github.com/Sherinas/ecommerce-microservices/product-service/internal/repository"
+	"github.com/Sherinas/ecommerce-microservices/product-service/pb/product"
 	"github.com/rs/zerolog"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
