@@ -1,0 +1,92 @@
+version: '3.8'
+
+services:
+  api-gateway:
+    build:
+      context: ./APIGateway
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - AUTH_SERVICE_ADDR=auth-service:50051
+      - ADMIN_SERVICE_ADDR=admin-service:50054
+      - PRODUCT_SERVICE_ADDR=product-service:50054
+      - JWT_SECRET=your-secret-key
+      - ADMIN_SECRET=your-admin-secret-key
+      - API_GATEWAY_PORT=8080
+    depends_on:
+      - auth-service
+      - admin-service
+      - product-service
+    networks:
+      - ecommerce-network 
+
+  auth-service:
+    build:
+      context: ./Auth-Service
+      dockerfile: Dockerfile
+    ports:
+      - "50051:50051"
+    environment:
+      - POSTGRES_USER=sherinascdlm
+      - POSTGRES_PASSWORD=admin123
+      - POSTGRES_HOST=postgres-database
+      - POSTGRES_PORT=5432
+      - JWT_SECRET=your-secret-key
+      - ADMIN_SECRET=your-admin-secret-key
+      - AUTH_PORT=50051
+    depends_on:
+      - postgres-database
+    networks:
+      - ecommerce-network
+
+  admin-service:
+    build:
+      context: ./adminservice
+      dockerfile: Dockerfile
+    ports:
+      - "50053:50053"
+    environment:  
+      - PRODUCT_SERVICE_ADDR=product-service:50054
+      - USER_SERVICE_ADDR=auth-service:50051  # Assuming "user-service" = "auth-service"
+      - JWT_SECRET=your-secret-key
+      - ADMIN_PORT=50053
+    depends_on:
+      - product-service
+    networks:
+      - ecommerce-network  
+
+  product-service:
+    build:
+      context: ./Product-Service
+      dockerfile: Dockerfile
+    ports:
+      - "50054:50054"
+    environment:
+      - POSTGRES_USER=sherinascdlm
+      - POSTGRES_PASSWORD=admin123
+      - POSTGRES_HOST=postgres-database
+      - POSTGRES_PORT=5432
+      - PRODUCT_PORT=50054
+    depends_on:
+      - postgres-database
+    networks:
+      - ecommerce-network    
+
+  postgres-database:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_USER=sherinascdlm
+      - POSTGRES_PASSWORD=admin123
+      - POSTGRES_DB=ecom_micro
+    volumes:
+      - postgres-db-data:/var/lib/postgresql/data
+    networks:
+      - ecommerce-network
+
+networks:
+  ecommerce-network:
+    driver: bridge
+
+volumes:
+  postgres-db-data:
