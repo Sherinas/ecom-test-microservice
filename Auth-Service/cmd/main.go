@@ -3,11 +3,11 @@ package main
 import (
 	"net"
 
-	"github.com/Sherinas/ecommerce-microservices/auth-service/config"
-	"github.com/Sherinas/ecommerce-microservices/auth-service/internal/db"
-	"github.com/Sherinas/ecommerce-microservices/auth-service/internal/handler"
-	"github.com/Sherinas/ecommerce-microservices/auth-service/logger"
-	"github.com/Sherinas/ecommerce-microservices/auth-service/pb/auth"
+	"github.com/Sherinas/ecommerce-microservices/auth-Service/config"
+	"github.com/Sherinas/ecommerce-microservices/auth-Service/internal/db"
+	"github.com/Sherinas/ecommerce-microservices/auth-Service/internal/handler"
+	"github.com/Sherinas/ecommerce-microservices/auth-Service/logger"
+	"github.com/Sherinas/ecommerce-microservices/auth-Service/pb/auth"
 	"google.golang.org/grpc"
 )
 

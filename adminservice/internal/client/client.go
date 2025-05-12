@@ -19,7 +19,7 @@ func NewClients(productAddr, userAddr string, logger *zerolog.Logger) (*Clients,
 		return nil, err
 	}
 
-	userConn, err := grpc.Dial("localhost:50051", grpc.WithInsecure())
+	userConn, err := grpc.Dial(userAddr, grpc.WithInsecure())
 	if err != nil {
 		logger.Error().Err(err).Str("addr", userAddr).Msg("Failed to connect to User Service")
 		return nil, err

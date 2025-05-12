@@ -3,8 +3,8 @@ package db
 import (
 	"fmt"
 
-	"github.com/Sherinas/ecommerce-microservices/auth-service/config"
-	"github.com/Sherinas/ecommerce-microservices/auth-service/internal/models"
+	"github.com/Sherinas/ecommerce-microservices/auth-Service/config"
+	"github.com/Sherinas/ecommerce-microservices/auth-Service/internal/models"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )

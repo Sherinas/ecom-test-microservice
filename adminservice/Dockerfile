@@ -8,6 +8,6 @@ RUN CGO_ENABLED=0 GOOS=linux go build -o admin-service ./cmd
 FROM alpine:latest
 WORKDIR /app
 COPY --from=builder /app/admin-service .
-COPY .env .
+COPY cmd/.env .
 EXPOSE 50053
 CMD ["./admin-service"]

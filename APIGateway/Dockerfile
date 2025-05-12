@@ -11,6 +11,6 @@ FROM alpine:latest
 
 WORKDIR /app
 COPY --from=builder /app/api-gateway .
-COPY .env .
+COPY cmd/.env .
 EXPOSE 8080
 CMD ["./api-gateway"]

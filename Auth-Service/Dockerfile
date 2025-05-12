@@ -7,10 +7,10 @@ RUN CGO_ENABLED=0 GOOS=linux go build -o auth-service ./cmd
 FROM alpine:latest
 
 COPY --from=builder /app/auth-service .
-COPY .env .
+COPY cmd/.env .
 
 EXPOSE 50051
 
-RUN ["./auth-service"]
+ENTRYPOINT ["./auth-service"]
 
 
