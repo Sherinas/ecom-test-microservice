@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-gateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-gateway
+  template:
+    metadata:
+      labels:
+        app: api-gateway
+    spec:
+      containers:
+      - name: api-gateway
+        image: sherinascdlm/ecom-test-microservice-api-gateway:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: AUTH_SERVICE_ADDR
+          value: "auth-service:50051"
+        - name: ADMIN_SERVICE_ADDR
+          value: "admin-service:50053"
+        - name: PRODUCT_SERVICE_ADDR
+          value: "product-service:50054"
+        - name: JWT_SECRET
+          value: "your-secret-key"
+        - name: ADMIN_SECRET
+          value: "your-admin-secret-key"
+        - name: API_GATEWAY_PORT
+          value: "8080"

@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: product-service
+  template:
+    metadata:
+      labels:
+        app: product-service
+    spec:
+      containers:
+      - name: product-service
+        image: sherinascdlm/ecom-test-microservice-product-service:v1
+        ports:
+        - containerPort: 50054
+        env:
+        - name: POSTGRES_USER
+          value: "sherinascdlm"
+        - name: POSTGRES_PASSWORD
+          value: "admin123"
+        - name: POSTGRES_HOST
+          value: "postgres-database"
+        - name: POSTGRES_PORT
+          value: "5432"
+        - name: PRODUCT_PORT
+          value: "50054"

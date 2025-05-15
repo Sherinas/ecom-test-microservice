@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-database
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres-database
+  template:
+    metadata:
+      labels:
+        app: postgres-database
+    spec:
+      containers:
+      - name: postgres
+        image: postgres:15-alpine
+        ports:
+        - containerPort: 5432
+        env:
+        - name: POSTGRES_USER
+          value: "sherinascdlm"
+        - name: POSTGRES_PASSWORD
+          value: "admin123"
+        - name: POSTGRES_DB
+          value: "ecom_micro"
+        volumeMounts:
+        - mountPath: /var/lib/postgresql/data
+          name: postgres-storage
+      volumes:
+      - name: postgres-storage
+        emptyDir: {}

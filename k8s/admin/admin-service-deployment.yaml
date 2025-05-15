@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: admin-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: admin-service
+  template:
+    metadata:
+      labels:
+        app: admin-service
+    spec:
+      containers:
+      - name: admin-service
+        image: sherinascdlm/ecom-test-microservice-admin-service:v1
+        ports:
+        - containerPort: 50053
+        env:
+        - name: PRODUCT_SERVICE_ADDR
+          value: "product-service:50054"
+        - name: USER_SERVICE_ADDR
+          value: "auth-service:50051"
+        - name: JWT_SECRET
+          value: "your-secret-key"
